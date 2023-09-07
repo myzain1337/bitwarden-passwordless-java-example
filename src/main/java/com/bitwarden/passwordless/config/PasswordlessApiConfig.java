@@ -1,10 +1,13 @@
 package com.bitwarden.passwordless.config;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "passwordless.api")
+@Getter
+@Setter
 public class PasswordlessApiConfig {
-    String url;
-    String publicKey;
-    String privateKey;
+    private String url;
+    private String privateKey;
 }
