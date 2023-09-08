@@ -16,7 +16,7 @@ public class PasswordlessConfig {
             @Autowired ObjectMapper objectMapper) {
         PasswordlessOptions passwordlessOptions = PasswordlessOptions.builder()
                 .apiUrl(passwordlessApiConfig.getUrl())
-                .apiSecretKey(passwordlessApiConfig.getPrivateKey())
+                .apiPrivateKey(passwordlessApiConfig.getPrivateKey())
                 .build();
         return PasswordlessClientBuilder.create(passwordlessOptions)
                 .objectMapper(objectMapper)

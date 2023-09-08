@@ -9,5 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Setter
 public class PasswordlessApiConfig {
     private String url;
+    private String publicKey;
     private String privateKey;
 }
