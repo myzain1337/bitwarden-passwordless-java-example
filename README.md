@@ -22,5 +22,6 @@ JDK 17 or newer is required to run the application.
 
 5. The application will now listen on port `8080` e.g. http://localhost:8080, where you can *Sign In* and *Register*
    users within your Application.
+6. For all Passwordless API functionalities supported by Java SDK, navigate to http://localhost:8080/swagger-ui/index.html
 
 [passwordless-java-sdk]:https://github.com/passwordless/passwordless-java-
