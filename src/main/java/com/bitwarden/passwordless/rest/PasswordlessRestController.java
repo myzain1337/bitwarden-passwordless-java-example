@@ -49,14 +49,14 @@ public class PasswordlessRestController {
         passwordlessClient.updateAppsFeature(updateAppsFeature);
     }
 
-    @DeleteMapping(path = "credentials")
-    public void deleteCredential(@RequestBody DeleteCredential deleteCredential) throws PasswordlessApiException, IOException {
-        passwordlessClient.deleteCredential(deleteCredential);
-    }
-
     @GetMapping(path = "credentials/{userId}")
     public List<Credential> getCredentials(@PathVariable String userId) throws PasswordlessApiException, IOException {
         return passwordlessClient.getCredentials(userId);
+    }
+
+    @DeleteMapping(path = "credentials")
+    public void deleteCredential(@RequestBody DeleteCredential deleteCredential) throws PasswordlessApiException, IOException {
+        passwordlessClient.deleteCredential(deleteCredential);
     }
 
     @GetMapping(path = "users")
