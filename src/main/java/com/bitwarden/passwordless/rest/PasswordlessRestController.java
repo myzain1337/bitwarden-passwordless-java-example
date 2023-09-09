@@ -3,16 +3,14 @@ package com.bitwarden.passwordless.rest;
 import com.bitwarden.passwordless.PasswordlessClient;
 import com.bitwarden.passwordless.error.PasswordlessApiException;
 import com.bitwarden.passwordless.error.PasswordlessProblemDetails;
-import com.bitwarden.passwordless.model.RegisterToken;
-import com.bitwarden.passwordless.model.RegisterTokenResponse;
-import com.bitwarden.passwordless.model.SignInVerify;
-import com.bitwarden.passwordless.model.SignInVerifyToken;
+import com.bitwarden.passwordless.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "passwordless/api",
@@ -27,13 +25,48 @@ public class PasswordlessRestController {
     }
 
     @PostMapping(path = "login")
-    public SignInVerifyToken login(@RequestBody SignInVerify signInVerify) throws PasswordlessApiException, IOException {
-        return passwordlessClient.signInVerify(signInVerify);
+    public VerifiedUser login(@RequestBody VerifySignIn verifySignIn) throws PasswordlessApiException, IOException {
+        return passwordlessClient.signIn(verifySignIn);
     }
 
     @PostMapping(path = "register")
-    public RegisterTokenResponse register(@RequestBody RegisterToken registerToken) throws PasswordlessApiException, IOException {
-        return passwordlessClient.createRegisterToken(registerToken);
+    public RegisteredToken register(@RequestBody RegisterToken registerToken) throws PasswordlessApiException, IOException {
+        return passwordlessClient.registerToken(registerToken);
+    }
+
+    @PostMapping(path = "alias")
+    public void createAlias(@RequestBody CreateAlias createAlias) throws PasswordlessApiException, IOException {
+        passwordlessClient.createAlias(createAlias);
+    }
+
+    @GetMapping(path = "alias/{userId}")
+    public List<Alias> getAliases(@PathVariable String userId) throws PasswordlessApiException, IOException {
+        return passwordlessClient.getAliases(userId);
+    }
+
+    @PutMapping(path = "apps/feature")
+    public void setAppsFeature(@RequestBody UpdateAppsFeature updateAppsFeature) throws PasswordlessApiException, IOException {
+        passwordlessClient.updateAppsFeature(updateAppsFeature);
+    }
+
+    @DeleteMapping(path = "credentials")
+    public void deleteCredential(@RequestBody DeleteCredential deleteCredential) throws PasswordlessApiException, IOException {
+        passwordlessClient.deleteCredential(deleteCredential);
+    }
+
+    @GetMapping(path = "credentials/{userId}")
+    public List<Credential> getCredentials(@PathVariable String userId) throws PasswordlessApiException, IOException {
+        return passwordlessClient.getCredentials(userId);
+    }
+
+    @GetMapping(path = "users")
+    public List<UserSummary> getUsers() throws PasswordlessApiException, IOException {
+        return passwordlessClient.getUsers();
+    }
+
+    @DeleteMapping(path = "users")
+    public void deleteUser(@RequestBody DeleteUser deleteUser) throws PasswordlessApiException, IOException {
+        passwordlessClient.deleteUser(deleteUser);
     }
 
     @ResponseBody
