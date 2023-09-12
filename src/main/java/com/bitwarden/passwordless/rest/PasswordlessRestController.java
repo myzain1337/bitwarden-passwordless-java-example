@@ -73,6 +73,6 @@ public class PasswordlessRestController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(PasswordlessApiException.class)
     public PasswordlessProblemDetails handlePasswordlessApiException(PasswordlessApiException exception) {
-        return exception.getDetails();
+        return exception.getProblemDetails();
     }
 }
