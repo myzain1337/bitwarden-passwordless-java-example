@@ -11,7 +11,7 @@ JDK 17 or newer is required to run the application.
 
 1. Get your own API keys here: https://admin.passwordless.dev/signup
 2. Change the value of the `passwordless.api.public-key` and `passwordless.api.private-key`
-   in [application.properties](src/main/resources/application.properties) with your API Public and Private Key.
+   in [application.properties](src/main/resources/application.properties) with your API Public Key and Secret.
 3. (optional) In case of self-hosting, change the value of the `passwordless.api.url` with the base url where
    your *Passwordless API* instance is running.
 4. Start the application
