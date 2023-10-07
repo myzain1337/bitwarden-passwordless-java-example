@@ -35,8 +35,8 @@ public class PasswordlessRestController {
     }
 
     @PostMapping(path = "alias")
-    public void createAlias(@RequestBody CreateAlias createAlias) throws PasswordlessApiException, IOException {
-        passwordlessClient.createAlias(createAlias);
+    public void setAlias(@RequestBody SetAlias setAlias) throws PasswordlessApiException, IOException {
+        passwordlessClient.setAlias(setAlias);
     }
 
     @GetMapping(path = "alias/{userId}")
