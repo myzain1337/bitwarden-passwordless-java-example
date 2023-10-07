@@ -18,7 +18,7 @@ public class UiController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("passwordless", passwordlessApiConfig);
+        model.addAttribute("passwordlessApiConfig", passwordlessApiConfig);
         return "index.html";
     }
 }
